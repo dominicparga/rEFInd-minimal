@@ -1,66 +1,96 @@
-## Minimalistic rEFInd theme
+# Fork of rEFInd-minimal
 
-[rEFInd](http://www.rodsbooks.com/refind/) is an easy to use boot manager for UEFI
-based systems. This is a clean and minimal theme for it.
+This fork of [github.com/EvanPurkhiser/rEFInd-minimal](https://github.com/EvanPurkhiser/rEFInd-minimal) is a minimal theme for [rEFInd](http://www.rodsbooks.com/refind/).
+It adds different color-themes, adds/changes some icons and refactors the original project a little.
 
-![rEFInd Minimalistic](http://i.imgur.com/3bMG6U7.png)
+## Usage
 
-### Usage
+The following steps describe how to add this theme to your `refind`-directory.
 
- 1. Locate your refind EFI directory. This is commonly `/boot/EFI/refind`
-    though it will depend on where you mount your ESP and where rEFInd is
-    installed. `fdisk -l` and `mount` may help.
+ 1. Locate your `refind`-directory in your `EFI`-location, e.g. `/efi/EFI/refind`.
+    The commands `fdisk -l` and `mount` may help.
+ 1. Create a folder `themes` in this directory.
+ 1. Clone this repository into the `themes` directory.
+ 1. Add `include themes/rEFInd-minimal/theme.conf` and `include themes/rEFInd-minimal/XYZ/theme.conf` at the end of `refind.conf`, where `XYZ` stands for your preferred color-theme, e.g. `dark`.
 
- 2. Create a folder called `themes` inside it, if it doesn't already exist
+## Original `theme.conf`
 
- 3. Clone this repository into the `themes` directory.
+The original `theme.conf` of `EvanPurkhiser/rEFInd-minimal` contains comments, which are mentioned below and removed from the conf-files in this project to reduce redundant copies of it.
 
- 4. To enable the theme add `include themes/rEFInd-minimal/theme.conf` at the end of
-    `refind.conf`.
+```zsh
+# Minimal refind theme
 
-Here's an example menuentry configuration (from the screenshot)
+# Hide user interface elements for personal preference or to increase
+# security:
+#  banner      - the rEFInd title banner (built-in or loaded via "banner")
+#  label       - boot option text label in the menu
+#  singleuser  - remove the submenu options to boot Mac OS X in single-user
+#                or verbose modes; affects ONLY MacOS X
+#  safemode    - remove the submenu option to boot Mac OS X in "safe mode"
+#  hwtest      - the submenu option to run Apple's hardware test
+#  arrows      - scroll arrows on the OS selection tag line
+#  hints       - brief command summary in the menu
+#  editor      - the options editor (+, F2, or Insert on boot options menu)
+#  all         - all of the above
+# Default is none of these (all elements active)
+#
+hideui singleuser,hints,arrows,label,badges
 
-```nginx
-menuentry "Arch Linux" {
-	icon /EFI/refind/themes/rEFInd-minimal/icons/os_arch.png
-	loader vmlinuz-linux
-	initrd initramfs-linux.img
-	options "rw root=UUID=dfb2919d-ff78-48db-a8a7-23f7542c343a loglevel=3"
-}
+# Set the name of a subdirectory in which icons are stored. Icons must
+# have the same names they have in the standard directory. The directory
+# name is specified relative to the main rEFInd binary's directory. If
+# an icon can't be found in the specified directory, an attempt is made
+# to load it from the default directory; thus, you can replace just some
+# icons in your own directory and rely on the default for others.
+# Default is "icons".
+#
+icons_dir themes/rEFInd-minimal/light/icons
 
-menuentry "Windows" {
-	icon /EFI/refind/themes/rEFInd-minimal/icons/os_win.png
-	loader /EFI/Microsoft/Boot/bootmgfw.efi
-}
+# Use a custom title banner instead of the rEFInd icon and name. The file
+# path is relative to the directory where refind.efi is located. The color
+# in the top left corner of the image is used as the background color
+# for the menu screens. Currently uncompressed BMP images with color
+# depths of 24, 8, 4 or 1 bits are supported, as well as PNG images.
+#
+banner themes/rEFInd-minimal/light/background.png
 
-menuentry "OSX" {
-	icon /EFI/refind/themes/rEFInd-minimal/icons/os_mac.png
-	loader /EFI/Apple/Boot/bootmgfw.efi
-}
+# Tells rEFInd whether to display banner images pixel-for-pixel (noscale)
+# or to scale banner images to fill the screen (fillscreen). The former is
+# the default.
+#
+banner_scale fillscreen
+
+# Custom images for the selection background. There is a big one (144 x 144)
+# for the OS icons, and a small one (64 x 64) for the function icons in the
+# second row. If only a small image is given, that one is also used for
+# the big icons by stretching it in the middle. If only a big one is given,
+# the built-in default will be used for the small icons.
+#
+# Like the banner option above, these options take a filename of an
+# uncompressed BMP image file with a color depth of 24, 8, 4, or 1 bits,
+# or a PNG image. The PNG format is required if you need transparency
+# support (to let you "see through" to a full-screen banner).
+#
+selection_big   themes/rEFInd-minimal/light/selection_big.png
+selection_small themes/rEFInd-minimal/light/selection_small.png
+
+# Which non-bootloader tools to show on the tools line, and in what
+# order to display them:
+#  shell           - the EFI shell (requires external program; see rEFInd
+#                    documentation for details)
+#  gptsync         - the (dangerous) gptsync.efi utility (requires external
+#                    program; see rEFInd documentation for details)
+#  apple_recovery  - boots the Apple Recovery HD partition, if present
+#  mok_tool        - makes available the Machine Owner Key (MOK) maintenance
+#                    tool, MokManager.efi, used on Secure Boot systems
+#  about           - an "about this program" option
+#  exit            - a tag to exit from rEFInd
+#  shutdown        - shuts down the computer (a bug causes this to reboot
+#                    EFI systems)
+#  reboot          - a tag to reboot the computer
+#  firmware        - a tag to reboot the computer into the firmware's
+#                    user interface (ignored on older computers)
+# Default is shell,apple_recovery,mok_tool,about,shutdown,reboot,firmware
+#
+showtools shutdown
 ```
-
-Entries that are autodetected should also show the proper icons.
-
-### Background sizes
-
-If you find the background looks blurry it may be due to the included wallpaper
-being an incorrect resolution for your monitor. You can download the [original
-high quality wallpaper][wallpaper], resize it as appropriate, and replace the
-`background.png`.
-
-You can of course also choose your own background!
-
-### Attribution
-
-The OS icons are from [Lightness for burg][icons] by [SWOriginal][icon-author].
-
-The background is [Minimalist Wallpaper][wallpaper] by
-[LeonardoAIanB][wallpaper-author]. Thank you to [Padster][padster] for locating
-it!
-
-[icons]: http://sworiginal.deviantart.com/art/Lightness-for-burg-181461810
-[icon-author]: http://sworiginal.deviantart.com/
-
-[padster]: https://github.com/theRealPadster
-[wallpaper]: http://leonardoalanb.deviantart.com/art/Minimalist-wallpaper-295519786
-[wallpaper-author]: http://leonardoalanb.deviantart.com/
