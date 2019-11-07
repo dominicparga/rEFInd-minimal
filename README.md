@@ -94,3 +94,17 @@ selection_small themes/rEFInd-minimal/light/selection_small.png
 #
 showtools shutdown
 ```
+
+## Good sources
+
+This repository forks, bases on and includes images and ideas from
+    EvanPurkhiser
+    https://github.com/EvanPurkhiser/rEFInd-minimal
+
+The OS-icons 'Lightness for burg' are from
+    SWOriginal
+    http://sworiginal.deviantart.com/art/Lightness-for-burg-181461810]
+
+The background 'Minimalist wallpaper' is from
+    LeonardoAlanB
+    http://leonardoalanb.deviantart.com/art/Minimalist-wallpaper-295519786
