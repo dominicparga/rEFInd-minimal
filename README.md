@@ -2,6 +2,7 @@
 
 This fork of [github.com/EvanPurkhiser/rEFInd-minimal](https://github.com/EvanPurkhiser/rEFInd-minimal) is a minimal theme for [rEFInd](http://www.rodsbooks.com/refind/).
 It adds different color-themes, adds/changes some icons and refactors the original project a little.
+Further, it is extended by the original refind-files to be easily copied into my refind-folder.
 
 ## Usage
 

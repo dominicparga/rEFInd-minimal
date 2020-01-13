@@ -1,22 +1,11 @@
-
-            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-                    Version 2, December 2004
-
- Copyright (C) 2019 Dominic Parga Cacheiro
-
- Everyone is permitted to copy and distribute verbatim or modified
- copies of this license document, and changing it is allowed as long
- as the name is changed.
-
-            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
-   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-
-  0. You just DO WHAT THE FUCK YOU WANT TO.
-
-
-EDIT
+The theme 'rEFInd-minimal' by EvanPurkhiser is licensed under the MIT, see the COPYING-file.
 
 The graphics, like icons, rEFInd and the theme rEFInd-minimal 
 are licensed under a forest of licenses, including GPL. This
-forest is too confusing and hence, the above WTFPL holds for
+forest is too confusing and hence, the following WTFPL holds for
 everything that doesn't collide with the other licenses.
+
+Copyright © 2019 Parga Cacheiro, Dominic
+This work is free. You can redistribute it and/or modify it under the
+terms of the Do What The Fuck You Want To Public License, Version 2,
+as published by Sam Hocevar. See the COPYING-file for more details.
