@@ -1,6 +1,6 @@
 # Fork of rEFInd-minimal
 
-This fork of [github.com/EvanPurkhiser/rEFInd-minimal](https://github.com/EvanPurkhiser/rEFInd-minimal) is a minimal theme for [rEFInd](http://www.rodsbooks.com/refind/).
+This fork of [github.com/EvanPurkhiser/rEFInd-minimal][github/evanpurkhiser/refind-minimal] is a minimal theme for [rEFInd][refind].
 It adds different color-themes, adds/changes some icons and refactors the original project a little.
 Further, it is extended by the original refind-files to be easily copied into my refind-folder.
 
@@ -109,3 +109,7 @@ The OS-icons 'Lightness for burg' are from
 The background 'Minimalist wallpaper' is from
     LeonardoAlanB
     http://leonardoalanb.deviantart.com/art/Minimalist-wallpaper-295519786
+
+[github/evanpurkhiser/refind-minimal]: https://github.com/EvanPurkhiser/rEFInd-minimal
+[refind]: http://www.rodsbooks.com/refind/
+[sourceforge/refind]: https://sourceforge.net/p/refind/code/ci/master/tree/
